@@ -9,15 +9,17 @@ Template.Post.helpers({
 	},
 	usuarioCurtiu: function () {
 		var curtidas = this.curtidas;
-		console.log(curtidas);
-
 		var posicao = curtidas.indexOf(Meteor.userId());
-		console.log(posicao);
+
 		if(posicao === -1) {
 			return false;
 		} else {
 			return true;
 		}
+	},
+
+	comentarios: function() {
+		return Comentarios.find({post: this._id}).fetch();
 	}
 });
 
